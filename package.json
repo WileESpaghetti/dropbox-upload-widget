@@ -1,0 +1,24 @@
+{
+  "name": "dropbox-upload-widget",
+  "version": "0.0.0",
+  "description": "A WordPress widget to allow people to upload files to your Dropbox account",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WileESpaghetti/dropbox-upload-widget.git"
+  },
+  "keywords": [
+    "WordPress",
+    "Dropbox",
+    "widget",
+    "upload",
+    "files",
+    "media",
+    "manager"
+  ],
+  "author": "Lehman Black",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/WileESpaghetti/dropbox-upload-widget/issues"
+  },
+  "homepage": "https://github.com/WileESpaghetti/dropbox-upload-widget#readme"
+}
