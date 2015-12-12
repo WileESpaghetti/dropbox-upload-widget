@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
     copy: {
       build: {
-        src:  ['<%= pkg.name  %>.php'],
+        src:  ['<%= pkg.name  %>.php', 'inc/**'],
         dest: 'build/'
       }
     },
