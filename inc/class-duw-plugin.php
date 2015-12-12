@@ -8,6 +8,8 @@
 class DUW_Plugin {
 	/**
 	 * Plugin activation hook for {{PLUGIN_NAME}}
+	 *
+	 * @static
 	 */
 	public static function activate() {
 		// FIXME stub
@@ -15,6 +17,8 @@ class DUW_Plugin {
 
 	/**
 	 * Plugin deactivation hook for {{PLUGIN_NAME}}
+	 *
+	 * @static
 	 */
 	public static function deactivate() {
 		// FIXME stub
@@ -22,6 +26,8 @@ class DUW_Plugin {
 
 	/**
 	 * Plugin deactivation hook for {{PLUGIN_NAME}}
+	 *
+	 * @static
 	 */
 	public static function uninstall() {
 		// FIXME stub
