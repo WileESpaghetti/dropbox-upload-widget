@@ -44,4 +44,33 @@ class DUW_Permissions {
 
 		// FIXME stub
 	}
+
+	/**
+	 * Filter the list of editable roles to exclude our guest role by default.
+	 * This is meant to be called inside of the editable_roles filter
+	 *
+	 * @param $roles array roles passed in from the editable_roles filter
+	 *
+	 * @return array $roles List of roles.
+	 */
+	public static function hide_guest_role($roles) {
+		if (isset($roles[self::$GUEST_ROLE['slug']])) {
+			unset($roles[self::$GUEST_ROLE['slug']]);
+		}
+
+		return $roles;
+	}
+
+	/**
+	 * Bypass the hide_guest_role() filter
+	 *
+	 * @return array $roles List of roles.
+	 */
+	public static function get_roles_with_guest() {
+		remove_filter('editable_roles', array(self::class, 'hide_guest_role'), 11);
+		$roles = get_editable_roles();
+		add_filter('editable_roles', array(self::class, 'hide_guest_role'), 11, 1);
+
+		return $roles;
+	}
 }
