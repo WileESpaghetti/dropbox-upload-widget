@@ -3,7 +3,7 @@
 
 defined( 'ABSPATH' ) or exit( 'WordPress must be running to use plugin' );
 
-define( 'DUW_PLUGIN', true );
+define( 'DUW_PLUGIN', plugin_basename(__FILE__) );
 
 require_once( 'inc/class-duw-plugin.php' );
 

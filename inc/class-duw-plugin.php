@@ -7,12 +7,28 @@
  */
 class DUW_Plugin {
 	/**
+	 * Helper function to check if we are running in a specific plugin hook
+	 * @param $name string the hook to check for
+	 *
+	 * @return bool whether or not we are in the proper hook
+	 */
+	public static function inHook($name) {
+		$hook = $name . '_' . DUW_PLUGIN;
+		$inHook = current_action() === $hook;
+		return $inHook;
+	}
+
+	/**
 	 * Plugin activation hook for {{PLUGIN_NAME}}
 	 *
 	 * @static
 	 */
 	public static function activate() {
-		// FIXME stub
+		if ( ! static::inHook('activate') ) {
+			return;
+		}
+
+		// FIXME incomplete
 	}
 
 	/**
@@ -21,7 +37,11 @@ class DUW_Plugin {
 	 * @static
 	 */
 	public static function deactivate() {
-		// FIXME stub
+		if ( ! static::inHook('deactivate') ) {
+			return;
+		}
+
+		// FIXME incomplete
 	}
 
 	/**
@@ -30,6 +50,10 @@ class DUW_Plugin {
 	 * @static
 	 */
 	public static function uninstall() {
-		// FIXME stub
+		if ( ! static::inHook('uninstall') ) {
+			return;
+		}
+
+		// FIXME incomplete
 	}
 }
