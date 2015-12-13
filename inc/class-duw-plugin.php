@@ -28,6 +28,8 @@ class DUW_Plugin {
 			return;
 		}
 
+		DUW_Permissions::init();
+
 		// FIXME incomplete
 	}
 
