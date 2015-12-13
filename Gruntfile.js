@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
     copy: {
       build: {
-        src:  ['<%= pkg.name  %>.php'],
+        src:  ['<%= pkg.name  %>.php', 'inc/**'],
         dest: 'build/'
       }
     },
@@ -36,13 +36,31 @@ module.exports = function(grunt) {
           src: [ 'build/<%= pkg.name %>.php']
         }
       }
+    },
+
+    'string-replace': {
+      pluginMeta: {
+        files: [{
+          expand: true,
+          cwd: 'build/',
+          src: '**/*',
+          dest: 'build/'
+        }],
+        options: {
+          replacements: [{
+            pattern: /\{\{PLUGIN_NAME}}/g,
+            replacement: 'Dropbox Upload Widget'
+          }]
+        }
+      }
     }
 
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-banner');
+  grunt.loadNpmTasks('grunt-string-replace');
 
-  grunt.registerTask('build', ['copy:build', 'usebanner:plugin']);
+  grunt.registerTask('build', ['copy:build', 'usebanner:plugin', 'string-replace:pluginMeta']);
   grunt.registerTask('default', ['build']);
 };
