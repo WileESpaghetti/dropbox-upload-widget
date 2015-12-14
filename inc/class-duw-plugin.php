@@ -8,13 +8,15 @@
 class DUW_Plugin {
 	/**
 	 * Helper function to check if we are running in a specific plugin hook
+	 *
 	 * @param $name string the hook to check for
 	 *
 	 * @return bool whether or not we are in the proper hook
 	 */
-	public static function inHook($name) {
-		$hook = $name . '_' . DUW_PLUGIN;
+	public static function inHook( $name ) {
+		$hook   = $name . '_' . DUW_PLUGIN;
 		$inHook = current_action() === $hook;
+
 		return $inHook;
 	}
 
@@ -24,7 +26,7 @@ class DUW_Plugin {
 	 * @static
 	 */
 	public static function activate() {
-		if ( ! static::inHook('activate') ) {
+		if ( ! static::inHook( 'activate' ) ) {
 			return;
 		}
 
@@ -39,7 +41,7 @@ class DUW_Plugin {
 	 * @static
 	 */
 	public static function deactivate() {
-		if ( ! static::inHook('deactivate') ) {
+		if ( ! static::inHook( 'deactivate' ) ) {
 			return;
 		}
 
@@ -52,7 +54,7 @@ class DUW_Plugin {
 	 * @static
 	 */
 	public static function uninstall() {
-		if ( ! static::inHook('uninstall') ) {
+		if ( ! static::inHook( 'uninstall' ) ) {
 			return;
 		}
 
