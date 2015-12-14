@@ -55,14 +55,18 @@ class DUW_Permissions {
 	 * Remove any custom roles and capabilities
 	 */
 	public static function remove() {
-		$allowRemove = ( DUW_Plugin::inHook('uninstall') || current_user_can('edit_users') );
-		if (! $allowRemove ) {
+		$removeAllowed = ( DUW_Plugin::inHook('uninstall') || current_user_can('edit_users') );
+		if (! $removeAllowed ) {
 			return;
 		}
 
 		remove_role( static::$GUEST_ROLE['slug'] );
 
-		// FIXME stub
+		$roles = get_editable_roles();
+		foreach ( $roles as $slug => $role ) {
+			$role = get_role( $slug );
+			$role->remove_cap( static::UPLOAD_CAP );
+		}
 	}
 
 	/**

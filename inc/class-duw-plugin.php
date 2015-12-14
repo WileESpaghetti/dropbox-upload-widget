@@ -56,6 +56,8 @@ class DUW_Plugin {
 			return;
 		}
 
+		DUW_Permissions::remove();
+
 		// FIXME incomplete
 	}
 }
