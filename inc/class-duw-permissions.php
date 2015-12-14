@@ -22,7 +22,12 @@ class DUW_Permissions {
 		// Add custom guest role if needed
 		$guestAdded = add_role(static::$GUEST_ROLE['slug'], static::$GUEST_ROLE['name'], array());
 
-		// FIXME stub
+		$permsSetup = ($guestAdded === null);
+		if ($permsSetup) {
+			return;
+		}
+
+		static::reset();
 	}
 
 	/**
