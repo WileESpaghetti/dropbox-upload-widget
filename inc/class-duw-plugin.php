@@ -28,6 +28,8 @@ class DUW_Plugin {
 			return;
 		}
 
+		DUW_Permissions::init();
+
 		// FIXME incomplete
 	}
 
@@ -53,6 +55,8 @@ class DUW_Plugin {
 		if ( ! static::inHook('uninstall') ) {
 			return;
 		}
+
+		DUW_Permissions::remove();
 
 		// FIXME incomplete
 	}
