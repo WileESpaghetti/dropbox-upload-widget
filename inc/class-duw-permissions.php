@@ -1,6 +1,7 @@
 <?php
 
 class DUW_Permissions {
+	const UPLOAD_CAP = 'duw_upload_files';
 
 	/**
 	 * @var array meta information for the custom guest role
@@ -28,7 +29,21 @@ class DUW_Permissions {
 	 * Reset custom upload permissions to their default setting for all roles
 	 */
 	public static function reset() {
-		// FIXME stub
+		$resetAllowed = ( DUW_Plugin::inHook('activate') || current_user_can('edit_users') );
+		if (! $resetAllowed ) {
+			return;
+		}
+
+		$roles = static::get_roles_with_guest();
+		foreach ( $roles as $slug => $role ) {
+			$role      = get_role( $slug );
+			$hasUpload = $role->has_cap( 'upload_files' );
+			if ( $hasUpload ) {
+				$role->add_cap( static::UPLOAD_CAP );
+			} else {
+				$role->remove_cap( static::UPLOAD_CAP );
+			}
+		}
 	}
 
 	/**
