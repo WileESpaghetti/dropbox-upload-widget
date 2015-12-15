@@ -7,6 +7,12 @@
  */
 class DUW_Plugin {
 	/**
+	 * The name of the plugin with proper formatting
+	 * @var string
+	 */
+	const NAME = '{{PLUGIN_NAME}}';
+
+	/**
 	 * Helper function to check if we are running in a specific plugin hook
 	 *
 	 * @param $name string the hook to check for
