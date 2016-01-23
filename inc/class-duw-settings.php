@@ -7,7 +7,7 @@
  */
 class DUW_Settings {
 	const OPTION_NAME = '';
-	const OPTIONS_PAGE_TITLE = DUW_Plugin::NAME . 'Settings';
+	const OPTIONS_PAGE_TITLE = DUW_Plugin::NAME . ' Settings';
 	const OPTIONS_PAGE_PERMS = 'manage_options';
 	const OPTIONS_MENU_TITLE = DUW_PLUGIN::NAME;
 	const OPTIONS_MENU_SLUG = DUW_PLUGIN;
@@ -35,6 +35,16 @@ class DUW_Settings {
 	 * Callback to render the settings page for {{PLUGIN_NAME}}
 	 */
 	public static function the_options_page() {
-		// FIXME stub
+		?><div class="wrap">
+            <h1><?php echo DUW_Settings::OPTIONS_PAGE_TITLE; ?></h1>
+
+            <form method="post" action="options.php">
+                <?php
+                settings_fields( DUW_Settings::OPTION_NAME );
+                do_settings_sections( DUW_Settings::OPTION_NAME );
+                submit_button();
+                ?>
+            </form>
+        </div><?php
 	}
 }
