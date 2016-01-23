@@ -36,11 +36,11 @@ class DUW_Settings {
 	 */
 	public static function the_options_page() {
 		?><div class="wrap">
-            <h1><?php echo DUW_Settings::OPTIONS_PAGE_TITLE; ?></h1>
+            <h1><?php echo static::OPTIONS_PAGE_TITLE; ?></h1>
 
             <form method="post" action="options.php"><?php
-                settings_fields( DUW_Settings::OPTION_NAME );
-                do_settings_sections( DUW_Settings::OPTION_NAME );
+                settings_fields( static::OPTION_NAME );
+                do_settings_sections( static::OPTION_NAME );
                 submit_button();
             ?></form>
         </div><?php
