@@ -13,6 +13,34 @@ class DUW_Settings {
 	const OPTIONS_MENU_SLUG = DUW_PLUGIN;
 
 	/**
+	 * Action to register {{PLUGIN_NAME}} settings
+	 *
+	 * This needs to be be run from the `admin_init` hook
+	 */
+	public static function register() {
+		if ( current_filter() !== 'admin_init' ) {
+			return;
+		}
+
+		register_setting(static::OPTION_NAME, static::OPTION_NAME, array(static::class, 'update'));
+	}
+
+	/**
+	 * Action to sanitize {{PLUGIN_NAME}} settings
+	 *
+	 * This is run as the sanitize_callback for register_setting
+	 * which is run during the sanitize_option_{$option_name} hook
+	 *
+	 * @param $settings array of settings to sanitize
+	 *
+	 * @return array the sanitized settings
+	 */
+	public static function update( $settings ) {
+		// FIXME stub
+		return $settings;
+	}
+
+	/**
 	 * Action to add link to the plugin settings page to the Settings menu.
 	 *
 	 * This needs to be be run from the `admin_menu` hook
