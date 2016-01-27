@@ -13,6 +13,12 @@ class DUW_Plugin {
 	const NAME = '{{PLUGIN_NAME}}';
 
 	/**
+	 * The text domain to use for translations
+	 * @var string
+	 */
+	const I18N = '{{TEXT_DOMAIN}}';
+
+	/**
 	 * Helper function to check if we are running in a specific plugin hook
 	 *
 	 * @param $name string the hook to check for

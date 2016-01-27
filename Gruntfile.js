@@ -50,7 +50,11 @@ module.exports = function(grunt) {
           replacements: [{
             pattern: /\{\{PLUGIN_NAME}}/g,
             replacement: 'Dropbox Upload Widget'
-          }]
+          },
+					{
+						pattern: /\{\{TEXT_DOMAIN}}/g,
+						replacement: '<%= pkg.name %>'
+					}]
         }
       }
     }
