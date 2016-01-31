@@ -57,14 +57,20 @@ module.exports = function(grunt) {
 					}]
         }
       }
+    },
+
+    'watch': {
+      files: ['**/*'],
+      tasks: ['build']
     }
 
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-string-replace');
 
   grunt.registerTask('build', ['copy:build', 'usebanner:plugin', 'string-replace:pluginMeta']);
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('default', ['watch']);
 };
