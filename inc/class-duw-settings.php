@@ -6,7 +6,7 @@
  * {{PLUGIN_NAME}} settings management functions
  */
 class DUW_Settings {
-	const OPTION_NAME = '';
+	const OPTION_NAME = 'duw_dropbox_upload';
 	const OPTIONS_PAGE_TITLE = DUW_Plugin::NAME . ' Settings';
 	const OPTIONS_PAGE_PERMS = 'manage_options';
 	const OPTIONS_MENU_TITLE = DUW_PLUGIN::NAME;
@@ -72,5 +72,17 @@ class DUW_Settings {
                 submit_button();
             ?></form>
         </div><?php
+	}
+
+	/**
+	 * Callback to render the Dropbox API settings
+	 */
+	public static function the_dropbox_api_settings_section() {
+		add_settings_section(
+			'dropbox_api',
+			__('You will need to create an <a href="https://www.dropbox.com/developers/apps" target="_blank">application</a> on the <a href="https://www.dropbox.com/developers" target="_blank">Dropbox developer page</a> if you haven\'t already.', DUW_Plugin::I18N),
+			'__return_null',
+			static::OPTION_NAME
+		);
 	}
 }
