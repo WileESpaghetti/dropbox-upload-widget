@@ -152,4 +152,18 @@ class DUW_Settings {
 
 		printf('<input type="text" name="%s[%s]" value="%s" class="regular-text">', esc_attr(static::OPTION_NAME), esc_attr($optName), esc_attr($optValue));
 	}
+
+	/**
+	 * Callback to render a checkbox for user role permission settings
+	 *
+	 * @param $args
+	 */
+	public static function the_upload_permission_field($args) {
+		printf('<label><input type="checkbox" name="%s[%s]" %s> %s</label>',
+			esc_attr(static::OPTION_NAME),
+			esc_attr($args[0]),
+			$args[1],
+			__('Allowed', DUW_PLUGIN::I18N)
+		);
+	}
 }
