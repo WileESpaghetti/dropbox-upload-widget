@@ -84,6 +84,15 @@ class DUW_Settings {
 			'__return_null',
 			static::OPTION_NAME
 		);
+
+		add_settings_field(
+			'app_key',
+			__( 'App key', DUW_PLUGIN::I18N ),
+			array(get_called_class(), 'the_setting_text_field'),
+			static::OPTION_NAME,
+			'dropbox_api',
+			array('app_key')
+		);
 	}
 
 	/**
