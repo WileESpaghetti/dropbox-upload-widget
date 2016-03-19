@@ -140,6 +140,27 @@ class DUW_Settings {
 			'__return_null',
 			static::OPTION_NAME
 		);
+
+		if (current_user_can('edit_users')) {
+			$roles = DUW_Permissions::get_roles_with_guest();
+
+			foreach($roles as $slug => $role) {
+				$role = get_role($slug);
+
+				$displayName = DUW_Permissions::get_role_display_name($role);
+				$hasPerms    = $role->has_cap(DUW_Permissions::UPLOAD_CAP);
+				$checked     = checked($hasPerms, true, false);
+
+				add_settings_field(
+					'user_role_' . $slug,
+					__( $displayName, DUW_PLUGIN::I18N ),
+					array(get_called_class(), 'the_upload_permission_field'),
+					static::OPTION_NAME,
+					'upload_permissions',
+					array($role->name, $checked, $displayName)
+				);
+			}
+		}
 	}
 
 	/**
