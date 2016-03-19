@@ -36,8 +36,11 @@ class DUW_Settings {
 	 * @return array the sanitized settings
 	 */
 	public static function update( $settings ) {
-		// FIXME stub
-		return $settings;
+		$saveThis = array();
+
+		$saveThis['app_key']      = ( ! empty($settings['app_key']) )      ? sanitize_text_field($settings['app_key'])      : '';
+
+		return $saveThis;
 	}
 
 	/**
