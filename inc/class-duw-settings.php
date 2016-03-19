@@ -46,6 +46,21 @@ class DUW_Settings {
 			add_settings_error('duw_dropbox_upload', 'api-settings', 'The Dropbox API settings not configured correctly', 'notice-warning');
 		}
 
+		if (current_user_can('edit_users')) {
+			$roles = DUW_Permissions::get_roles_with_guest();
+			foreach($roles as $slug => $role) {
+				$role       = get_role($slug);
+				$roleName   = esc_attr($role->name);
+				$cantUpload = empty($settings[$roleName]) || $settings[$roleName] !== 'on';
+
+				if ($cantUpload) {
+					$role->remove_cap( DUW_Permissions::UPLOAD_CAP );
+				} else {
+					$role->add_cap(    DUW_Permissions::UPLOAD_CAP );
+				}
+			}
+		}
+
 		return $saveThis;
 	}
 
