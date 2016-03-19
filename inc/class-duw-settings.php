@@ -89,7 +89,7 @@ class DUW_Settings {
 	public static function the_dropbox_api_settings_section() {
 		add_settings_section(
 			'dropbox_api',
-			__('You will need to create an <a href="https://www.dropbox.com/developers/apps" target="_blank">application</a> on the <a href="https://www.dropbox.com/developers" target="_blank">Dropbox developer page</a> if you haven\'t already.', DUW_Plugin::I18N),
+			__('<p>You will need to create an <a href="https://www.dropbox.com/developers/apps" target="_blank">application</a> on the <a href="https://www.dropbox.com/developers" target="_blank">Dropbox developer page</a> if you haven\'t already.</p>', DUW_Plugin::I18N),
 			'__return_null',
 			static::OPTION_NAME
 		);
@@ -119,6 +119,18 @@ class DUW_Settings {
 			static::OPTION_NAME,
 			'dropbox_api',
 			array('app_token')
+		);
+	}
+
+	/**
+	 * Callback to render the upload permissions settings
+	 */
+	public static function the_upload_permissions_settings_section() {
+		add_settings_section(
+			'upload_permissions',
+			__('Upload Permissions', DUW_PLUGIN::I18N),
+			'__return_null',
+			static::OPTION_NAME
 		);
 	}
 
