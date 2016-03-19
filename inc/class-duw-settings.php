@@ -85,4 +85,15 @@ class DUW_Settings {
 			static::OPTION_NAME
 		);
 	}
+
+	/**
+	 * Callback to render a text field for simple settings
+	 */
+	public static function the_setting_text_field($args) {
+		$options  = get_option( static::OPTION_NAME );
+		$optName  = $args[0];
+		$optValue = empty($options[$optName]) ? '' : $options[$optName];
+
+		printf('<input type="text" name="%s[%s]" value="%s" class="regular-text">', esc_attr(static::OPTION_NAME), esc_attr($optName), esc_attr($optValue));
+	}
 }
