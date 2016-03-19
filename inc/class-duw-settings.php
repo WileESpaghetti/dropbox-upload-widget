@@ -69,6 +69,14 @@ class DUW_Settings {
 	}
 
 	/**
+	 * Callback to render the settings page section for {{PLUGIN_NAME}}
+	 */
+	public static function the_options_sections() {
+		static::the_dropbox_api_settings_section();
+		static::the_upload_permissions_settings_section();
+	}
+
+	/**
 	 * Callback to render the settings page for {{PLUGIN_NAME}}
 	 */
 	public static function the_options_page() {
