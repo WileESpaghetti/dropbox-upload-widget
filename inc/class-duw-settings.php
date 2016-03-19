@@ -93,6 +93,15 @@ class DUW_Settings {
 			'dropbox_api',
 			array('app_key')
 		);
+
+		add_settings_field(
+			'app_secret',
+			__( 'App secret', DUW_PLUGIN::I18N ),
+			array(get_called_class(), 'the_setting_text_field'),
+			static::OPTION_NAME,
+			'dropbox_api',
+			array('app_secret')
+		);
 	}
 
 	/**
