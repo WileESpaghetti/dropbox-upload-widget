@@ -40,6 +40,7 @@ class DUW_Settings {
 
 		$saveThis['app_key']      = ( ! empty($settings['app_key']) )      ? sanitize_text_field($settings['app_key'])      : '';
 		$saveThis['app_secret']   = ( ! empty($settings['app_secret']) )   ? sanitize_text_field($settings['app_secret'])   : '';
+		$saveThis['access_token'] = ( ! empty($settings['access_token']) ) ? sanitize_text_field($settings['access_token']) : '';
 
 		return $saveThis;
 	}
