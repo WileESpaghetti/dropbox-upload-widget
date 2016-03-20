@@ -50,17 +50,27 @@ module.exports = function(grunt) {
           replacements: [{
             pattern: /\{\{PLUGIN_NAME}}/g,
             replacement: 'Dropbox Upload Widget'
-          }]
+          },
+					{
+						pattern: /\{\{TEXT_DOMAIN}}/g,
+						replacement: '<%= pkg.name %>'
+					}]
         }
       }
+    },
+
+    'watch': {
+      files: ['**/*', '!build/'],
+      tasks: ['build']
     }
 
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-string-replace');
 
   grunt.registerTask('build', ['copy:build', 'usebanner:plugin', 'string-replace:pluginMeta']);
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('default', ['watch']);
 };

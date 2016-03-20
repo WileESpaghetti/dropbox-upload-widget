@@ -97,4 +97,19 @@ class DUW_Permissions {
 
 		return $roles;
 	}
+
+	/**
+	 * Gets the friendly display name of a user role
+	 *
+	 * @param WP_Role $role
+	 *
+	 * @return array|WP_Roles
+	 */
+	public static function get_role_display_name(WP_Role $role) {
+		$displayName = wp_roles();
+		$displayName = $displayName->get_names();
+		$displayName = $displayName[$role->name];
+
+		return $displayName;
+	}
 }
