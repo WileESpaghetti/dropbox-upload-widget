@@ -70,7 +70,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-string-replace');
+  grunt.loadNpmTasks('grunt-composer');
 
-  grunt.registerTask('build', ['copy:build', 'usebanner:plugin', 'string-replace:pluginMeta']);
+  grunt.registerTask('build', ['copy:build', 'usebanner:plugin', 'string-replace:pluginMeta', 'composer:install']);
   grunt.registerTask('default', ['watch']);
 };
