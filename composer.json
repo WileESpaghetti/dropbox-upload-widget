@@ -3,5 +3,6 @@
     "vendor-dir": "build/vendor"
   },
   "require": {
+    "dropbox/dropbox-sdk": "v1.1.*"
   }
 }
