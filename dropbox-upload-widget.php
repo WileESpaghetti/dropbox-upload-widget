@@ -10,6 +10,7 @@ if ( !defined('DUW_PLUGIN') ) {
 
 require_once( 'vendor/autoload.php' );
 require_once( 'inc/class-duw-permissions.php' );
+require_once( 'inc/class-duw-dropbox.php' );
 require_once( 'inc/class-duw-settings.php' );
 require_once( 'inc/class-duw-plugin.php' );
 
