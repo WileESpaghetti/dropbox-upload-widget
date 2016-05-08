@@ -43,7 +43,7 @@ class DUW_Settings {
 		$saveThis['access_token'] = ( ! empty($settings['access_token']) ) ? sanitize_text_field($settings['access_token']) : '';
 
 		if (empty($saveThis['app_key']) || empty($saveThis['app_secret']) || empty($saveThis['access_token'])) {
-			add_settings_error('duw_dropbox_upload', 'api-settings', __('The Dropbox API settings not configured correctly', DUW_PLUGIN::I18N), 'notice-warning');
+			add_settings_error('duw_dropbox_upload', 'api-settings', __('The Dropbox API settings not configured correctly', DUW_PLUGIN::I18N), 'notice-warning'); // FIXME hard-coded setting name
 		}
 
 		if (current_user_can('edit_users')) {
@@ -142,6 +142,17 @@ class DUW_Settings {
 			static::OPTION_NAME,
 			'dropbox_api',
 			array('access_token')
+		);
+
+		add_settings_field(
+			'test',
+			__( 'test', DUW_PLUGIN::I18N ),
+			function(){
+				var_dump(DUW_Dropbox::account_info());
+			},
+			static::OPTION_NAME,
+			'dropbox_api',
+			array()
 		);
 	}
 
