@@ -88,6 +88,7 @@ class DUW_Settings {
 	 */
 	public static function the_options_sections() {
 		static::the_dropbox_api_settings_section();
+		static::the_account_info_section();
 		static::the_upload_permissions_settings_section();
 	}
 
@@ -153,6 +154,20 @@ class DUW_Settings {
 			static::OPTION_NAME,
 			'dropbox_api',
 			array()
+		);
+	}
+	
+	/**
+	 * Callback to render profile information for the configured Dropbox account
+	 *
+	 * This section mainly exists to test that the Dropbox API is properly configured.
+	 */
+	public static function the_account_info_section() {
+		add_settings_section(
+			'account_info',
+			__('Dropbox profile', DUW_PLUGIN::I18N),
+			'__return_null',
+			static::OPTION_NAME
 		);
 	}
 
