@@ -13,6 +13,7 @@ require_once( 'inc/class-duw-permissions.php' );
 require_once( 'inc/class-duw-dropbox.php' );
 require_once( 'inc/class-duw-settings.php' );
 require_once( 'inc/class-duw-plugin.php' );
+require_once( 'inc/template-tags.php' );
 
 register_activation_hook( __FILE__, array( 'DUW_Plugin', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'DUW_Plugin', 'deactivate' ) );
