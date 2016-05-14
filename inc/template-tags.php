@@ -115,3 +115,39 @@ function duw_the_uid() {
      */
     echo apply_filters('duw_the_uid', $uid, DUW_Dropbox::account_info());
 }
+
+/**
+ * Retrieve the referral link associated with the configured Dropbox account.
+ *
+ * @since 0.0.0
+ *
+ * @return string|false The referral link or false if there was an error getting the Dropbox account information
+ */
+function duw_get_the_referral_link() {
+    $accountInfo = DUW_Dropbox::account_info();
+
+    if (empty($accountInfo) || empty($accountInfo['referral_link'])) {
+        return false;
+    }
+
+    return $accountInfo['referral_link'];
+}
+
+/**
+ * Display the referral link associated with the configured Dropbox account.
+ *
+ * @since 0.0.0
+ */
+function duw_the_referral_link() {
+    $referralLink = duw_get_the_referral_link();
+
+    /**
+     * Filter the Dropbox referral link.
+     *
+     * @since 0.0.0
+     *
+     * @param string $referralLink    The Dropbox referral URL you can use to get credit for user registrations.
+     * @param array  $accountInfo     The raw Dropbox account information pulled from the API.
+     */
+    echo apply_filters('duw_the_referral_link', $referralLink, DUW_Dropbox::account_info());
+}
