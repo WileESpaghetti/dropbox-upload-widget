@@ -79,3 +79,39 @@ function duw_the_email() {
      */
     echo apply_filters('duw_the_email', $email, Duw_Dropbox::account_info());
 }
+
+/**
+ * Retrieve the user ID associated with the configured Dropbox account.
+ *
+ * @since 0.0.0
+ *
+ * @return string|false The user ID or false if there was an error getting the Dropbox account information
+ */
+function duw_get_the_uid() {
+    $accountInfo = DUW_Dropbox::account_info();
+
+    if (empty($accountInfo) || empty($accountInfo['uid'])) {
+        return false;
+    }
+
+    return $accountInfo['uid'];
+}
+
+/**
+ * Display the user ID associated with the configured Dropbox account.
+ *
+ * @since 0.0.0
+ */
+function duw_the_uid() {
+    $uid = duw_get_the_uid();
+
+    /**
+     * Filter the Dropbox user ID.
+     *
+     * @since 0.0.0
+     *
+     * @param string $uid            The Dropbox user ID.
+     * @param array  $accountInfo    The raw Dropbox account information pulled from the API.
+     */
+    echo apply_filters('duw_the_uid', $uid, DUW_Dropbox::account_info());
+}
