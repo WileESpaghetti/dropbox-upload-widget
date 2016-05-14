@@ -187,3 +187,39 @@ function duw_the_usage() {
      */
     echo apply_filters('duw_the_usage', $usage, DUW_Dropbox::account_info());
 }
+
+/**
+ * Retrieve the maximum number of bytes that can be used to store files on the configured Dropbox account.
+ *
+ * @since 0.0.0
+ *
+ * @return string|false The max usage or false if there was an error getting the Dropbox account information
+ */
+function duw_get_the_quota() {
+    $accountInfo = DUW_Dropbox::account_info();
+
+    if (empty($accountInfo) || empty($accountInfo['quota_info']) || empty($accountInfo['quota_info']['quota'])) {
+        return false;
+    }
+
+    return $accountInfo['quota_info']['quota'];
+}
+
+/**
+ * Display the maximum number of bytes that can be stored on the configured Dropbox account.
+ *
+ * @since 0.0.0
+ */
+function duw_the_quota() {
+    $max = duw_get_the_quota();
+
+    /**
+     * Filter the maximum number of bytes that can be stored on the configured Dropbox account.
+     *
+     * @since 0.0.0
+     *
+     * @param string $max             The number of bytes you are allowed to use to store files on Dropbox.
+     * @param array  $accountInfo     The raw Dropbox account information pulled from the API.
+     */
+    echo apply_filters('duw_the_quota', $max, DUW_Dropbox::account_info());
+}
