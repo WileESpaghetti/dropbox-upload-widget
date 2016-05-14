@@ -151,3 +151,39 @@ function duw_the_referral_link() {
      */
     echo apply_filters('duw_the_referral_link', $referralLink, DUW_Dropbox::account_info());
 }
+
+/**
+ * Retrieve the number of bytes used by files on the configured Dropbox account.
+ *
+ * @since 0.0.0
+ *
+ * @return string|false The number of bytes or false if there was an error getting the Dropbox account information
+ */
+function duw_get_the_usage() {
+    $accountInfo = DUW_Dropbox::account_info();
+
+    if (empty($accountInfo) || empty($accountInfo['quota_info']) || empty($accountInfo['quota_info']['normal'])) {
+        return false;
+    }
+
+    return $accountInfo['quota_info']['normal'];
+}
+
+/**
+ * Display the number of bytes used by files on the configured Dropbox account.
+ *
+ * @since 0.0.0
+ */
+function duw_the_usage() {
+    $usage = duw_get_the_usage();
+
+    /**
+     * Filter the Dropbox usage.
+     *
+     * @since 0.0.0
+     *
+     * @param string $usage             The number of bytes you are allowed to use to store files on Dropbox.
+     * @param array  $accountInfo     The raw Dropbox account information pulled from the API.
+     */
+    echo apply_filters('duw_the_usage', $usage, DUW_Dropbox::account_info());
+}
