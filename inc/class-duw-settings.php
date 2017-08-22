@@ -144,17 +144,6 @@ class DUW_Settings {
 			'dropbox_api',
 			array('access_token')
 		);
-
-		add_settings_field(
-			'test',
-			__( 'test', DUW_PLUGIN::I18N ),
-			function(){
-				var_dump(DUW_Dropbox::account_info());
-			},
-			static::OPTION_NAME,
-			'dropbox_api',
-			array()
-		);
 	}
 	
 	/**
@@ -168,6 +157,47 @@ class DUW_Settings {
 			__('Dropbox profile', DUW_PLUGIN::I18N),
 			'__return_null',
 			static::OPTION_NAME
+		);
+		
+		if ( ! DUW_Dropbox::is_configured() ) {
+			// FIXME show user warning if API not configured or error if API called failed
+			return;
+		}
+
+		add_settings_field(
+			'display_name',
+			__( 'Display name', DUW_PLUGIN::I18N ),
+			'duw_the_display_name',
+			static::OPTION_NAME,
+			'account_info',
+			array()
+		);
+
+		add_settings_field(
+			'email',
+			__( 'Email', DUW_PLUGIN::I18N ),
+			'duw_the_email',
+			static::OPTION_NAME,
+			'account_info',
+			array()
+		);
+
+		add_settings_field(
+			'uid',
+			__( 'User ID', DUW_PLUGIN::I18N ),
+			'duw_the_uid',
+			static::OPTION_NAME,
+			'account_info',
+			array()
+		);
+
+		add_settings_field(
+			'referral_link',
+			__( 'Referral link', DUW_PLUGIN::I18N ),
+			'duw_the_referral_link',
+			static::OPTION_NAME,
+			'account_info',
+			array()
 		);
 	}
 
